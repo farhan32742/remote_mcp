@@ -1,4 +1,5 @@
 import random
+import os
 from mcp.server.fastmcp import FastMCP
 
 # Create FastMCP server
@@ -12,6 +13,10 @@ async def generate_random(min_value: int, max_value: int) -> int:
     return random.randint(min_value, max_value)
 
 if __name__ == "__main__":
-    # FastMCP mein SSE ke liye sirf transport define karna kafi hota hai
-    # Default port 8000 hota hai.
-    mcp.run(transport="sse")
+    # Environment variables se port aur host uthayein (Production ke liye zaroori)
+    port = int(os.getenv("PORT", 8000))
+    # Remote access ke liye host hamesha 0.0.0.0 hona chahiye
+    host = "0.0.0.0" 
+    
+    print(f"Starting MCP server on {host}:{port}")
+    mcp.run(transport="sse", host=host, port=port)
