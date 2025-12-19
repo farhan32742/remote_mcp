@@ -18,4 +18,4 @@ async def generate_random(min_value: int, max_value: int) -> int:
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8000))
     # Local testing ke liye
-    mcp.run(transport="sse", host="0.0.0.0", port=port)
+    mcp.run()
