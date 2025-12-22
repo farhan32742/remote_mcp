@@ -17,4 +17,4 @@ async def generate_random(min_value: int, max_value: int) -> int:
 # FastMCP Cloud is block ko ignore karega aur conflict nahi hoga
 if __name__ == "__main__":
     # Local testing ke liye
-    mcp.run()
+    mcp.run(transport="streamable-http")
